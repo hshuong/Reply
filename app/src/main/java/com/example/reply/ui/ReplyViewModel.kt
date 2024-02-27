@@ -35,9 +35,15 @@ class ReplyViewModel : ViewModel() {
     private fun initializeUIState() {
         val mailboxes: Map<MailboxType, List<Email>> =
             LocalEmailsDataProvider.allEmails.groupBy { it.mailbox }
+        // lay ra cac buc thu co phan loai thanh inbox, sent, drafts, spam
         _uiState.value =
             ReplyUiState(
+                // cac buc thu da phan loai
                 mailboxes = mailboxes,
+                // lay ra 1 buc thu dang duoc chon
+                // Cac buc thu loai inbox co buc thu nao ko?. neu co thi lay buc
+                // thu co id la 0. neu ko co thu kieu inbox thi mailboxes[MailboxType.Inbox] se la
+                // null nen mailboxes[MailboxType.Inbox]?.get(0) co ket qua la null
                 currentSelectedEmail = mailboxes[MailboxType.Inbox]?.get(0)
                     ?: LocalEmailsDataProvider.defaultEmail
             )

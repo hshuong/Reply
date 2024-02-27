@@ -25,5 +25,8 @@ data class ReplyUiState(
     val currentSelectedEmail: Email = LocalEmailsDataProvider.defaultEmail,
     val isShowingHomepage: Boolean = true
 ) {
+    // khoi tao sau
+    // danh sach cac thu loai Inbox Type. Neu ds nay null thi bao loi ngay vi
+    // o day ko kiem tra null.
     val currentMailboxEmails: List<Email> by lazy { mailboxes[currentMailbox]!! }
 }

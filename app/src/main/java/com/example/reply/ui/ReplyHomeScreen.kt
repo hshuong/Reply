@@ -100,6 +100,9 @@ private fun ReplyAppContent(
 ) {
     Box(modifier = modifier) {
         val navigationRailContentDescription = stringResource(R.string.navigation_rail)
+        // NavigationRail is used for medium size devices.
+        // It is also used along with ModalNavigationDrawer
+        // when user want to see more content.
         ReplyNavigationRail(
             currentTab = replyUiState.currentMailbox,
             onTabPressed = onTabPressed,
@@ -120,6 +123,8 @@ private fun ReplyAppContent(
                         horizontal = dimensionResource(R.dimen.email_list_only_horizontal_padding)
                     )
             )
+            // BottomNavigationBar is used for compact devices with maximum
+            // of 5 navigation destinations. O day la 4
             val bottomNavigationContentDescription = stringResource(R.string.navigation_bottom)
             ReplyBottomNavigationBar(
                 currentTab = replyUiState.currentMailbox,
