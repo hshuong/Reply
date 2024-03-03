@@ -16,6 +16,7 @@
 package com.example.reply.ui
 
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -53,6 +54,11 @@ fun ReplyDetailsScreen(
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    //  Since the Reply app doesn't use a NavHost, you have to add
+    //  the code to handle the back button manually. You will do this next.
+    BackHandler {
+        onBackPressed()
+    }
     Box(modifier = modifier) {
         LazyColumn(
             modifier = Modifier
